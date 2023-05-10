@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{%  block body %}
+
+<h1>Bonjour {{ nameOfUser | raw }} !</h1>
+
+    <p>{{ serie.title }} : {{ serie.year }}</p>
+{# création de variable #}
+{% set name = "Nicolas" %}
+{#  affichage d'une variable #}
+{# si j'écris name en dehors des accolades, name s'affichera, pas Sylvain
+car il ne comprendra pas que c'est une variable #}
+<h2>Hello {{ name }} !</h2>
+
+{#  création de tableau #}
+{% set colors=['cornflowerblue','pink','purple','green'] %}
+{# affichage du tableau, color est le nom qu'on a choisi
+ de donner à l'élément itératif #}
+{% for color in colors %}
+    {% if loop.first %}
+        <p>Première itération</p>
+    {% endif %}
+    {% if loop.last %}
+        <p>Dernière itération</p>
+    {% endif %}
+    <div style="background-color: {{ color }}">{{ color }}</div>
+    <div>Position de l'élément{{ loop.index }} / {{ loop.length }}</div>
+
+{% endfor %}
+
+{# manipulation d'objet #}
+{% set serie = {
+    title : "The Simpsons",
+    year : 1989
+} %}
+<h3>Title : {{ serie.title }} </h3>
+
+{% for key, val in serie %}
+    <p>{{ key }} : {{ val }}</p>
+{% endfor %}
+
+{# quelques filtres #}
+
+<h3>Filtres</h3>
+<div>{{ name|upper }} : {{ name |length }} lettres</div>
+<div> Colors : {{ colors | join('-') }}</div>
+<div>{{ "now" | date('Y-m-d') }}</div>
+
+{% endblock %}
+
+{% block title %}
+    {{ parent() }} | Test
+{% endblock %}
