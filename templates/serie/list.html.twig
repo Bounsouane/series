@@ -1,0 +1,32 @@
+{%  extends 'base.html.twig' %}
+
+{%  block body %}
+    <h2>List of series</h2>
+
+    <section class="series-list">
+
+        {% for serie in series %}
+            <article>
+                    <a href="{{ path('serie_show', {'id': serie.id}) }}" title="view detail of {{ serie.name }}">
+                    <img src="{{ asset('img/posters/series/' ~ serie.poster) }}" alt="{{serie.name  }}">
+                </a>
+                <p>{{ serie.name }}</p>
+            </article>
+        {% endfor %}
+
+    </section>
+    <div class="flex_between flex-div">
+        {% if currentPage > 1 %}
+        <a class="link_button" href="{{ path('serie_list',{'page' : currentPage - 1}) }}">Previous page</a>
+        {% else %}
+            <div></div>
+        {%endif%}
+        {% if currentPage < maxPage %}
+        <a class="link_button" href="{{ path('serie_list',{'page' : currentPage + 1}) }}">Previous page</a>
+        {% endif %}
+    </div>
+{% endblock %}
+
+{% block title %}
+{{ parent() }} | List
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}|Add
+{% endblock %}
+
+{% block body %}
+
+    {% embed 'views/forms/serie_form.html.twig' %}
+        {% block h2 %}Add a new serie!{% endblock %}
+        {% block buttonlabel %} Add a new one {% endblock %}
+    {% endembed %}
+{% endblock %}
+
