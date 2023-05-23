@@ -1,12 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% embed 'views/forms/default_form.html.twig' with {'form': serieForm} %}
+
     <H2>Update the Serie!</H2>
 
     {{ form_start(serieForm) }}
     {{ form_widget(serieForm) }}
     <button>Update</button>
     {{ form_end(serieForm) }}
+    {% endembed %}
 
 {% endblock %}
 
