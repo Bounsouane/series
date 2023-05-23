@@ -29,6 +29,8 @@ class SeasonController extends AbstractController
         $serie = $serieRepository->find($id);
 
         $season = new Season();
+        //association de l'instance de season avec la bonne série
+        $season->setSerie($serie);
         $seasonForm = $this->createForm(SeasonType::class, $season);
 
         $seasonForm->handleRequest($request);

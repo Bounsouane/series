@@ -8,6 +8,8 @@
     <h2>Detail of a serie</h2>
     <section>
         <a class="link_button" href="{{ path('serie_update', {'id' : serie.id}) }}">Edit</a>
+        <a class="link_button" onclick="return confirm('Are you sure you want to delete {{ serie.name }} ?')" href="{{ path('serie_delete', {'id' : serie.id}) }}">Delete</a>
+        <a class="link_button" href="{{ path('app_seasonadd', {'id' : serie.id}) }}">Add season</a>
 
         <div class="serie-details">
 
